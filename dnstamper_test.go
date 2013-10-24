@@ -16,7 +16,7 @@ var control_resolver = flag.String("control_resolver", "8.8.8.8", "resolver to u
 
 func TestDNSTamper(t *testing.T) {
 	for _, hostname := range strings.Split(*hostnames, ",") {
-		log.Printf("Testing %q against control %q", hostname, control_resolver)
+		log.Printf("Testing %q against control %q", hostname, *control_resolver)
 		want, err := lookupIP(*control_resolver, hostname)
 		if err != nil {
 			t.Fatalf("Failed to resolve %q at control resolver %q", hostname, *control_resolver)
